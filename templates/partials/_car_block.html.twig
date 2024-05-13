@@ -1,0 +1,12 @@
+<div class="col-md-4 my-2 d-flex">
+    <div class="card w-100">
+        <img src="{{vich_uploader_asset(car, 'imageFile')}}" class="card-img-top" alt="image de {{car.brand}} {{car.models}}" style="height: 200px; object-fit: cover;">
+        <div class="card-body">
+            <h5 class="card-title">{{car.brand}} {{car.models}}</h5>
+            <p class="card-text">Prix: {{car.price}} €</p>
+            <p class="card-text">Kilométrage: {{car.kilometers}} kms</p>
+            <a href="{{path('app_car', {'id': car.id}) }}" class="btn btn-dark">+ DE DÉTAILS</a>
+        </div>
+    </div>
+</div>
+

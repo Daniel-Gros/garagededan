@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ car.brand }}
+	{{ car.models }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="card mt-5" style="width:60%">
+		{% if car.imageName %}
+			<img src="{{ vich_uploader_asset(car, 'imageFile') }}" class="card-img-top" alt="photo du véhicule {{ car.brand }} {{ car.models}}" style="width: 100%; height: 25vh;">
+		{% else %}
+			<img src="{{ asset('build/images/no-image-available.png') }}" class="card-img-top" alt="image du véhicule non disponible" style="width: 100%; height: 25vh;">
+		{% endif %}
+		<div class="card-body">
+			<h5 class="card-title">{{car.brand}}
+				{{car.models}}</h5>
+			<ul class="row col-md-6">
+				<li>
+					Année modèle :
+					{{ car.year | date('Y') }}
+				</li>
+				<li>
+					Prix :
+					{{ car.price }}
+					€
+				</li>
+				<li>
+					Kilométrage :
+					{{ car.kilometers }}
+					km
+				</li>
+				<li>
+					Puissance :
+					{{ car.power }}
+				</li>
+				<li>
+					Carburant :
+					{{ car.energy }}
+				</li>
+				<li>
+					Couleur :
+					{{ car.color }}
+				</li>
+				<li>
+					Nombre de portes :
+					{{ car.door }}
+				</li>
+				<li>
+					Nombre de sièges :
+					{{ car.sit }}
+				</li>
+			</ul>
+			<a href="#" class="btn btn-dark">CONTACTEZ NOUS</a>
+		</div>
+	</div>
+	<div class="text-center mt-5">
+		{% include 'partials/_home_button.html.twig' %}
+	</div>
+{% endblock %}

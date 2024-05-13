@@ -1,0 +1,10 @@
+<div class="col-md-4 my-2 d-flex">
+    <div class="card w-100">
+        <img src="{{ vich_uploader_asset(service, 'imageFile') }}" class="card-img-top" alt="image relative au service concerné : {{ service.name }}" style="height: 200px; object-fit: cover;">
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ service.name }}</h5>
+            <p class="card-text text-primary">{{ service.description }}</p>
+            <a href="#" class="btn btn-dark mt-auto">CONTACTEZ NOUS</a>
+        </div>
+    </div>
+</div>

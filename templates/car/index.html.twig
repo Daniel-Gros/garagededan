@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Véhicules d'occasion
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		{% for car in cars %}
+			{% include "partials/_car_block.html.twig" %}
+		{% endfor %}
+	</div>
+{% endblock %}

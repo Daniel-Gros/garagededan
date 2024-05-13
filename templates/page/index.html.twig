@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garage Vincent Parrot
+{% endblock %}
+
+{% block body %}
+	{% include "partials/_about.html.twig" %}
+	<div class="row">
+
+		{% include "partials/_intro_car_block.html.twig" %}
+
+		{% for car in cars %}
+			{% include "partials/_car_block.html.twig" %}
+		{% endfor %}
+
+		{# {% include "partials/_intro_service_block.html.twig" %}
+
+		{% for service in services %}
+			{% include "partials/_service_block.html.twig" %}
+		{% endfor %}
+
+		{% include "partials/_intro_review_block.html.twig" %}
+
+		{% for review in reviews %}
+			{% include "partials/_review_block.html.twig" %}
+		{% endfor %}
+
+		{% include "partials/_intro_contact_block.html.twig" %}
+
+		{% include "partials/_contact_block.html.twig" %} #}
+	</div>
+
+{% endblock %}
