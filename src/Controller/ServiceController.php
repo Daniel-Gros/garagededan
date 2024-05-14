@@ -12,10 +12,10 @@ class ServiceController extends AbstractController
     #[Route('/showservice', name: 'app_showservice')]
     public function index(ServiceRepository $serviceRepository): Response
     {
-        $services = $serviceRepository->findBy([], ['id' => 'DESC']);
+        $service = $serviceRepository->findBy([], ['id' => 'DESC']);
 
         return $this->render('service/index.html.twig', [
-            'services' => $services,
+            'service' => $service,
         ]);
     }
 }

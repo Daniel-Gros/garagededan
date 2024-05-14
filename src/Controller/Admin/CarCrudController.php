@@ -30,7 +30,7 @@ class CarCrudController extends AbstractCrudController
         $carImagesPath = $mappingsParams['car']['uri_prefix'];
 
 
-        yield DateField::new('year', 'Année');
+        yield DateField::new('year', 'Date de mise en circulation');
         yield IntegerField::new('price', 'Prix');
         yield IntegerField::new('kilometers', 'Kilométrage');
         yield AssociationField::new('brand', 'Marque');

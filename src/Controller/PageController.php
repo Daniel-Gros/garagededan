@@ -16,9 +16,10 @@ class PageController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(CarRepository $carRepository, ParameterBagInterface $parameterBagInterface, ServiceRepository $serviceRepository, ReviewRepository $reviewRepository): Response
     {
-        $limit = $parameterBagInterface->get('home_car_limit');
-        $cars = $carRepository->findBy([], ['id' => 'DESC'], $limit);
-        $service = $serviceRepository->findBy([], ['id' => 'DESC']);
+        $carLimit = $parameterBagInterface->get('home_car_limit');
+        $cars = $carRepository->findBy([], ['id' => 'DESC'], $carLimit);
+        $serviceLimit = $parameterBagInterface->get('home_service_limit');
+        $service = $serviceRepository->findBy([], ['id' => 'DESC'], $serviceLimit);
         $review = $reviewRepository->findBy([], ['id' => 'DESC']);
 
         $websiteName = 'Garage Vincent Parrot';
