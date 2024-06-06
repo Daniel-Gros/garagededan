@@ -4,6 +4,8 @@
 {% endblock %}
 
 {% block body %}
+	{% include "partials/_filter_for_cars.html.twig" %}
+
 	<div class="row">
 		{% for car in cars %}
 			{% include "partials/_car_block.html.twig" %}

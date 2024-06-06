@@ -19,16 +19,15 @@ class ReviewCrudController extends AbstractCrudController
         return Review::class;
     }
 
-    
+
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('nickname', 'Pseudonyme :');
         yield ChoiceField::new('score', 'Note:')
             ->setChoices(['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5'])
             ->renderExpanded();
-            yield TextareaField::new('message', 'Votre message :');
-            yield BooleanField::new('approved', 'Approuver ?')->hideOnIndex();
-            yield AssociationField::new('users', 'Utilisateur')->hideOnIndex();
+        yield TextareaField::new('message', 'Votre message :');
+        yield BooleanField::new('approved', 'Approuver ?')->hideOnIndex();
+        yield AssociationField::new('users', 'Utilisateur')->hideOnIndex();
     }
-    
 }

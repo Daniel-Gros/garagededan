@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Form\CarFilterType;
 use App\Repository\CarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -11,21 +13,22 @@ use Symfony\Component\Routing\Attribute\Route;
 class CarController extends AbstractController
 {
     #[Route('/showcar', name: 'app_showcar')]
-    public function index(CarRepository $carRepository): Response
+    public function list(Request $request, CarRepository $carRepository): Response
     {
-        $cars = $carRepository->findall([], ['id' => 'DESC'] );
-        // requête de test Postman
-        // $data = [];
-        // foreach ($cars as $car) {
-        //     $data[] = [
-        //         'id' => $car->getId(),
-        //         'year' => $car->getYear()->format('Y'),
-        //         'price' => $car->getPrice(),
-        //         'kilometers' => $car->getKilometers(),
-        //     ];
-        // }
-        // return new JsonResponse($data);
+        $form = $this->createForm(CarFilterType::class);
+        $form->handleRequest($request);
+
+        $criteria = $form->getData();
+        $cars = $carRepository->findByCriteria($criteria);
+
+        if ($request->headers->get('X-Requested-With') === 'XMLHttpRequest') {
+            return $this->json([
+                'cars' => $cars,
+            ]);
+        }
+
         return $this->render('car/index.html.twig', [
+            'form' => $form->createView(),
             'cars' => $cars,
         ]);
     }

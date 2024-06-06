@@ -21,19 +21,41 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
-    /**
-     * @return Car[] Returns an array of Car objects
-     */
-    public function findByExampleField($name): array
+    public function findByCriteria($criteria)
     {
-        return $this->createQueryBuilder('c')
-            ->select('c.id')
-            ->andWhere('c.name = :name')
-            ->setParameter('name', $name)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult();
+        $qb = $this->createQueryBuilder('c');
+
+        if (isset($criteria['minKilometers'])) {
+            $qb->andWhere('c.kilometers >= :minKilometers')
+                ->setParameter('minKilometers', $criteria['minKilometers']);
+        }
+
+        if (isset($criteria['maxKilometers'])) {
+            $qb->andWhere('c.kilometers <= :maxKilometers')
+                ->setParameter('maxKilometers', $criteria['maxKilometers']);
+        }
+
+        if (isset($criteria['minPrice'])) {
+            $qb->andWhere('c.price >= :minPrice')
+                ->setParameter('minPrice', $criteria['minPrice']);
+        }
+
+        if (isset($criteria['maxPrice'])) {
+            $qb->andWhere('c.price <= :maxPrice')
+                ->setParameter('maxPrice', $criteria['maxPrice']);
+        }
+
+        if (isset($criteria['minYear'])) {
+            $qb->andWhere('c.year >= :minYear')
+                ->setParameter('minYear', $criteria['minYear']);
+        }
+
+        if (isset($criteria['maxYear'])) {
+            $qb->andWhere('c.year <= :maxYear')
+                ->setParameter('maxYear', $criteria['maxYear']);
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
     //    public function findOneBySomeField($value): ?Car

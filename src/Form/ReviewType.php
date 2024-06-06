@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -28,7 +29,7 @@ class ReviewType extends AbstractType
             ])
             ->add('nickname')
             ->add('message')
-            ->add('approved')
+            ->add('approved', HiddenType::class)
             ->add('users', EntityType::class, [
                 'class' => User::class,
                 'query_builder' => function (EntityRepository $er) {
