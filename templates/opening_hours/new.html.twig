@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel horaire du magasin{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouvel horaire</h1>
+
+    {{ include('opening_hours/_form.html.twig') }}
+
+    <a href="{{ path('app_opening_hours_index') }}">Retour à la liste</a>
+{% endblock %}

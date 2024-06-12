@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReviewRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -20,6 +21,15 @@ class Review
     private ?int $score = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Length(
+        max: 2000,
+        maxMessage: 'Votre avis ne peut pas dépasser {{ limit }} caractères.'
+    )]
+    #[Assert\Regex(
+        pattern: '/<[^>]*>/',
+        match: false,
+        message: 'Votre avis contient des caractères non autorisés, veuillez rectifier votre message.'
+    )]
     private ?string $message = null;
 
     /**

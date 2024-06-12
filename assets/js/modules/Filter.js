@@ -27,7 +27,7 @@ export class Filter {
         cars.forEach(car => {
             const carDiv = document.createElement('div');
             carDiv.classList.add('car');
-            carDiv.innerHTML = `
+            carDiv.textContent = `
                 <p>Prix: ${car.price} €</p>
                 <p>Kilomètres: ${car.kilometers}</p>
                 <p>Année: ${car.year}</p>

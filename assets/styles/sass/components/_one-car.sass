@@ -1,11 +1,39 @@
+// car-card.sass
+
 @use '../abstracts/_all.sass' as abstracts
 
-.one-car
-    height: 100%
-    width: 60vw
-    color: abstracts.$dark
-    background-color: abstracts.$primary
-    border: 1px solid
-    border-radius: 5px
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2)
-    list-style: none
+.card
+    &.one-car
+        margin-top: 5rem
+        width: 100%
+        max-width: 60%
+        margin-left: auto
+        margin-right: auto
+        box-shadow: 0 4px 8px abstracts.$dark
+        border-radius: 5px
+        overflow: hidden
+
+        .card-img-top
+            width: 100%
+            height: 25vh
+            object-fit: cover
+
+        .card-body
+            padding: 1rem
+
+        .card-title
+            font-family: abstracts.$headline-font
+            font-size: 1.5rem
+            margin-bottom: 1rem
+
+        ul.body-text
+            font-family: abstracts.$body-font
+            list-style: none
+            padding: 0
+
+            li
+                margin-bottom: 0.5rem
+
+@media (max-width: 768px)
+.card.one-car
+    width: 90%

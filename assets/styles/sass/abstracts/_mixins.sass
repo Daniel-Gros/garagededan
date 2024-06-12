@@ -1,13 +1,12 @@
 @use './_variables.sass' as var
 
 @mixin button-style()
+    padding: 5px 20px
     background-color: var.$dark
     color: var.$light
     border: none
     border-radius: 5px
+    text-decoration: none
     &:hover
         background-color: var.$light
         color: var.$dark
-
-@mixin button-animation()
-    transition: var.$dark 0.3s ease-in-out

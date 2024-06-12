@@ -1,0 +1,38 @@
+@use '../abstracts/_all.sass' as abstracts
+
+.filter-container
+    padding: 20px
+    margin: 0 auto
+
+    .row
+        display: flex
+        flex-wrap: wrap
+        margin: -10px
+
+        .col-md-4
+            flex: 1
+            padding: 10px
+            min-width: 250px
+
+            @media (max-width: 768px)
+                flex: 0 0 100%
+
+            label
+                display: block
+                margin-bottom: 5px
+                font-weight: bold
+
+            input
+                width: 100%
+                padding: 10px
+                margin-bottom: 15px
+                border: 1px solid #ccc
+                border-radius: 5px
+                box-sizing: border-box
+                font-size: 1rem
+
+                &:focus
+                    border-color: abstracts.$dark
+                    outline: none
+                    box-shadow: 0 0 5px abstracts.$dark
+

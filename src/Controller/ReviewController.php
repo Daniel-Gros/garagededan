@@ -31,4 +31,12 @@ class ReviewController extends AbstractController
             'randomView' => $randomView,
         ]);
     }
+
+    #[Route('/reviewcreation', name: 'app_review_create')]
+    public function create(): Response
+    {
+        return $this->render('review/_form.html.twig', [
+            'controller_name' => 'ReviewController',
+        ]);
+    }
 }

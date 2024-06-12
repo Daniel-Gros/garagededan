@@ -1,6 +1,6 @@
-<h1>Voici nos véhicules à la vente</h1>
+<h1 class="headline-text">Voici nos véhicules à la vente</h1>
 {{ form_start(form) }}
-<div class="container">
+<div class="filter-container">
 <div class="row">
 <div class="col-md-4">
     {{ form_row(form.minPrice) }}
@@ -17,7 +17,7 @@
     {{ form_row(form.maxKm) }}
 </div>
 </div>
-<button type="submit">Filtrer</button>
-<button type="reset">Réinitialiser</button>
+<button type="submit" class="button">Filtrer</button>
+<button type="reset" class="button">Réinitialiser</button>
 </div>
 {{ form_end(form) }}

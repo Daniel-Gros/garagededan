@@ -16,7 +16,7 @@
 		<div class="card-body">
 			<h5 class="card-title">{{car.brand}}
 				{{car.models}}</h5>
-			<ul class="row col-md-6">
+			<ul class="row col-md-6 body-text">
 				<li>
 					Année modèle :
 					{{ car.year | date('Y') }}
@@ -52,7 +52,7 @@
 					{{ car.sit }}
 				</li>
 			</ul>
-			<a href="#" class="btn btn-dark">CONTACTEZ NOUS</a>
+			<a href="{{ path('app_contact', {'car_id': car.id}) }}" class="button">CONTACTEZ NOUS</a>
 		</div>
 	</div>
 	<div class="text-center mt-5">
