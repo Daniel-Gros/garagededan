@@ -1,0 +1,8 @@
+<h1 class="headline-text text-center">Nos avis clients</h1>
+    <ul>
+        {% for review in review %}
+            <li>
+                {{ review.nickname }}: {{ review.message }} (Note: {{ review.score }}/5)
+            </li>
+        {% endfor %}
+    </ul>

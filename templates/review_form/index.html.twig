@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel avis{% endblock %}
+
+{% block body %}
+<h1 class="headline-text">Rédaction de l'avis</h1>
+<div class="form-container">
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    
+    <button class="button">Enregistrer</button>
+
+{{ form_end(form)}}
+</div>
+{% endblock %}

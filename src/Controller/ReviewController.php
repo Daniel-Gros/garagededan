@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Review;
+use App\Form\ReviewType;
 use App\Repository\ReviewRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -32,11 +36,13 @@ class ReviewController extends AbstractController
         ]);
     }
 
-    #[Route('/reviewcreation', name: 'app_review_create')]
-    public function create(): Response
+    #[Route('/review', name: 'review_list')]
+    public function list(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('review/_form.html.twig', [
-            'controller_name' => 'ReviewController',
+        $reviews = $entityManager->getRepository(Review::class)->findAll();
+
+        return $this->render('review/list.html.twig', [
+            'reviews' => $reviews,
         ]);
     }
 }

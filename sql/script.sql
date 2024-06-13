@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS 'user'
     'role' VARCHAR(255) NOT NULL
 );
 
--- insertion dans la table du compte admin de Vincent Parrot
+-- insertion dans la table du compte admin de Vincent Parrot et du compte employé de test
 INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES (1, 'admin@vparrot.fr', '[\"ROLE_ADMIN\"]', SHA2('admin', 256));
 INSERT INTO 'user' ('id', 'email', 'roles', 'password') VALUES (2, 'test@test.fr', '[\"ROLE_USER\"]', SHA2('employé', 256));
 

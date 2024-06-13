@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1 class="headline-text">Contactez-nous</h1>
-<div class="form-container">
+<div class="form-container mb-5">
     {{ form_start(form) }}
         {{ form_row(form.subject) }}
         {{ form_row(form.name) }}
@@ -20,4 +20,5 @@
             {{ message }}
         </div>
     {% endfor %}
+    </div>
 {% endblock %}

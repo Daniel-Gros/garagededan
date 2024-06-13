@@ -1,0 +1,25 @@
+@use "../abstracts/_all.sass" as abstracts
+
+.footer-container
+    padding: abstracts.$footer-padding
+    overflow: hidden
+    position: relative
+
+    footer
+        text-align: center
+        position: relative
+        transition: all abstracts.$transition-duration ease
+
+        h5
+            font-family: abstracts.$headline-font
+            .body-text
+                font-size: 1rem
+                color: abstracts.$dark
+                margin: 0
+                padding: abstracts.$footer-padding
+                transition: padding abstracts.$transition-duration ease
+
+            .footer-extra-content
+                display: none
+                opacity: 0
+                transition: opacity abstracts.$transition-duration ease

@@ -52,7 +52,9 @@
 					{{ car.sit }}
 				</li>
 			</ul>
-			<a href="{{ path('app_contact', {'car_id': car.id}) }}" class="button">CONTACTEZ NOUS</a>
+			<div class="contact-button-wrapper">
+				<a href="{{ path('app_contact', {'car_id': car.id}) }}" class="button">CONTACTEZ NOUS</a>
+			</div>
 		</div>
 	</div>
 	<div class="text-center mt-5">

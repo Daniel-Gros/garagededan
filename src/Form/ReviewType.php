@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,21 +27,16 @@ class ReviewType extends AbstractType
                     '4' => 4,
                     '5' => 5,
                 ],
+                'multiple' => false,
             ])
-            ->add('nickname')
-            ->add('message')
-            ->add('approved', HiddenType::class)
-            ->add('users', EntityType::class, [
-                'class' => User::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('u')
-                        ->select('u.id', 'u.nickname');
-                },
-                'choice_label' => function ($user) {
-                    return $user->getNickname();
-                },
-                'multiple' => true,
-                'expanded' => false,
+            ->add('nickname', TextType::class, [
+                'label' => 'Votre pseudo',
+            ])
+            ->add('message', TextType::class, [
+                'label' => 'Message',
+            ])
+            ->add('approved', HiddenType::class, [
+                'data' => false,
             ])
         ;
     }

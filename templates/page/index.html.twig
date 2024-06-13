@@ -20,6 +20,10 @@
 		{% for service in service %}
 			{% include "partials/_service_block.html.twig" %}
 		{% endfor %}
+
+		{% include "partials/_intro_review.html.twig" %}
+
+		{% include "review/list.html.twig" %}
 	</div>
 
 {% endblock %}

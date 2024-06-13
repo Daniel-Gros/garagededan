@@ -1,5 +1,3 @@
-// car-card.sass
-
 @use '../abstracts/_all.sass' as abstracts
 
 .card
@@ -12,11 +10,13 @@
         box-shadow: 0 4px 8px abstracts.$dark
         border-radius: 5px
         overflow: hidden
+        transition: all 0.3s ease
 
         .card-img-top
             width: 100%
             height: 25vh
             object-fit: cover
+            transition: height 0.3s ease
 
         .card-body
             padding: 1rem
@@ -34,6 +34,12 @@
             li
                 margin-bottom: 0.5rem
 
+        &:hover
+            .card-img-top
+                height: 50vh
+
 @media (max-width: 768px)
-.card.one-car
-    width: 90%
+    .card.one-car
+        width: 60%
+        margin : 0 auto
+

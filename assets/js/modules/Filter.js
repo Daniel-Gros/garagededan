@@ -27,11 +27,19 @@ export class Filter {
         cars.forEach(car => {
             const carDiv = document.createElement('div');
             carDiv.classList.add('car');
-            carDiv.textContent = `
-                <p>Prix: ${car.price} €</p>
-                <p>Kilomètres: ${car.kilometers}</p>
-                <p>Année: ${car.year}</p>
-            `;
+
+            const pricePara = document.createElement('p');
+            pricePara.textContent = `Prix: ${car.price} €`;
+            carDiv.appendChild(pricePara);
+
+            const kmPara = document.createElement('p');
+            kmPara.textContent = `Kilomètres: ${car.kilometers}`;
+            carDiv.appendChild(kmPara);
+
+            const yearPara = document.createElement('p');
+            yearPara.textContent = `Année: ${car.year}`;
+            carDiv.appendChild(yearPara);
+
             this.carList.appendChild(carDiv);
         });
     }
@@ -40,4 +48,3 @@ export class Filter {
 document.addEventListener('DOMContentLoaded', function() {
     const filter = new Filter('filter-form', 'car-list');
 });
-
