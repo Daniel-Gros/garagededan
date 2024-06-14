@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS 'user'
     'id' INT PRIMARY KEY AUTO_INCREMENT,
     'email' VARCHAR(255) NOT NULL,
     'password' VARCHAR(255) NOT NULL,
-    'role' VARCHAR(255) NOT NULL
+    `roles` JSON NOT NULL
 );
 
 -- insertion dans la table du compte admin de Vincent Parrot et du compte employé de test
