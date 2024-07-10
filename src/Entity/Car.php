@@ -100,9 +100,9 @@ class Car
 
         return $this;
     }
-    
 
-    public function getPrice(): ?int 
+
+    public function getPrice(): ?int
     {
         return $this->price;
     }

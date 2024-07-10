@@ -1,23 +1,28 @@
+<script>
+    import { ResetFilter } from './ResetFilter.js';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const resetFilter = new ResetFilter("{{ form.vars.id }}");
+    });
+</script>
+
 <h1 class="headline-text">Voici nos véhicules à la vente</h1>
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'class': 'filter-form'}}) }}
 <div class="filter-container">
-<div class="row">
-<div class="col-md-4">
-    {{ form_row(form.minPrice) }}
-    {{ form_row(form.maxPrice) }}
-</div>
-
-<div class="col-md-4">
-    {{ form_row(form.minYear) }}
-    {{ form_row(form.maxYear) }}
-</div>
-
-<div class="col-md-4">
-    {{ form_row(form.minKm) }}
-    {{ form_row(form.maxKm) }}
-</div>
-</div>
-<button type="submit" class="button">Filtrer</button>
-<button type="reset" class="button">Réinitialiser</button>
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_row(form.minPrice, {'attr': {'class': 'min-price-input'}}) }}
+            {{ form_row(form.maxPrice, {'attr': {'class': 'max-price-input'}}) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_row(form.minYear, {'attr': {'class': 'min-year-input'}}) }}
+            {{ form_row(form.maxYear, {'attr': {'class': 'max-year-input'}}) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_row(form.minKm, {'attr': {'class': 'min-kilometers-input'}}) }}
+            {{ form_row(form.maxKm, {'attr': {'class': 'max-kilometers-input'}}) }}
+        </div>
+    </div>
+    <button type="submit" class="button">Filtrer</button>
 </div>
 {{ form_end(form) }}

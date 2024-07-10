@@ -35,9 +35,6 @@ class ReviewType extends AbstractType
             ->add('message', TextType::class, [
                 'label' => 'Message',
             ])
-            ->add('approved', HiddenType::class, [
-                'data' => false,
-            ])
         ;
     }
 

@@ -1,6 +1,9 @@
 <div class="footer-container bg-light">
 	<footer class="text-center sticky-bottom">
-		{% include 'partials/_infos.html.twig' %}
+		<div class="row">
+			{{ render(controller('App\\Controller\\OpeningHoursController::index')) }}
+			{% include 'partials/_infos.html.twig' %}
+		</div>
 		<h5 class="body-text">&copy; Dossier Projet Daniel Gros 2024, tous droits réservés.</h5>
 	</footer>
 </div>

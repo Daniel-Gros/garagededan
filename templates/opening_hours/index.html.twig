@@ -1,43 +1,28 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}OpeningHours index{% endblock %}
-
-{% block body %}
-    <h1>OpeningHours index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Day</th>
-                <th>Open_time_am</th>
-                <th>Close_time_am</th>
-                <th>Open_time_pm</th>
-                <th>Close_time_pm</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for opening_hour in opening_hours %}
-            <tr>
-                <td>{{ opening_hour.id }}</td>
-                <td>{{ opening_hour.day }}</td>
-                <td>{{ opening_hour.openTimeAm ? opening_hour.openTimeAm|date('H:i:s') : '' }}</td>
-                <td>{{ opening_hour.closeTimeAm ? opening_hour.closeTimeAm|date('H:i:s') : '' }}</td>
-                <td>{{ opening_hour.openTimePm ? opening_hour.openTimePm|date('H:i:s') : '' }}</td>
-                <td>{{ opening_hour.closeTimePm ? opening_hour.closeTimePm|date('H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_opening_hours_show', {'id': opening_hour.id}) }}">show</a>
-                    <a href="{{ path('app_opening_hours_edit', {'id': opening_hour.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_opening_hours_new') }}">Create new</a>
-{% endblock %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-8 col-md-6">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="body-text">
+                        <th class="d-md-table-cell text-center fs-6">Jour</th>
+                        <th class="text-center fs-6">Ouverture Matin</th>
+                        <th class="text-center fs-6">Fermeture Matin</th>
+                        <th class="text-center fs-6">Ouverture Après-midi</th>
+                        <th class="text-center fs-6">Fermeture Après-midi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for openingHour in openingHours %}
+                        <tr class="body-text">
+                            <td>{{ openingHour.day }}</td>
+                            <td class="{{ openingHour.openTimeAm.format('H:i') == '00:00'? 'bg-danger fw-bold' : '' }}">{{ openingHour.openTimeAm.format('H:i') == '00:00'? 'FERMÉ' : openingHour.openTimeAm.format('H:i') }}</td>
+                            <td class="{{ openingHour.closeTimeAm.format('H:i') == '00:00'? 'bg-danger fw-bold' : '' }}">{{ openingHour.closeTimeAm.format('H:i') == '00:00'? 'FERMÉ' : openingHour.closeTimeAm.format('H:i') }}</td>
+                            <td class="{{ openingHour.openTimePm.format('H:i') == '00:00'? 'bg-danger fw-bold' : '' }}">{{ openingHour.openTimePm.format('H:i') == '00:00'? 'FERMÉ' : openingHour.openTimePm.format('H:i') }}</td>
+                            <td class="{{ openingHour.closeTimePm.format('H:i') == '00:00'? 'bg-danger fw-bold' : '' }}">{{ openingHour.closeTimePm.format('H:i') == '00:00'? 'FERMÉ' : openingHour.closeTimePm.format('H:i') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

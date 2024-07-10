@@ -48,10 +48,10 @@ class Contact
         match: false,
         message: 'Le nom du sujet contient des caractères non autorisés, veuillez corriger le sujet.'
     )]
-    #[Assert\Regex(
-        pattern: '/^\d+$/',
-        message: "Le numéro de téléphone doit être composé uniquement de chiffres."
-    )]
+    // #[Assert\Regex(
+    //     pattern: '/^\d+$/',
+    //     message: "Le numéro de téléphone doit être composé uniquement de chiffres."
+    // )]
     private ?string $subject = null;
 
     #[ORM\Column(type: Types::TEXT)]

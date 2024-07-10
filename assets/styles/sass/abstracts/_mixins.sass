@@ -1,4 +1,5 @@
 @use './_variables.sass' as var
+// mixin des boutons
 
 @mixin button-style()
     padding: 5px 20px
@@ -23,6 +24,9 @@
             font-size: 0.8em
             padding: 0.5em 1em
 
+    // mixin des responsive
+
+
 @mixin responsive-form()
     @media (max-width: 768px)
         .form-container
@@ -39,3 +43,24 @@
             padding: 10px
         h1
             font-size: 1.25rem
+
+@mixin responsive-navbar()
+    .navbar-nav 
+        text-align: center
+        width: 100%
+
+
+    .nav-item 
+        width: 100%
+
+
+    .nav-item .nav-link 
+        display: inline-block
+        width: 100%
+
+
+@mixin responsive-breakpoint($breakpoint) 
+    @media (max-width: $breakpoint) 
+        text-align: center
+        width: 100%
+        display: block

@@ -1,0 +1,47 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Jour</th>
+            <th>Ouverture Matin</th>
+            <th>Fermeture Matin</th>
+            <th>Ouverture Après-midi</th>
+            <th>Fermeture Après-midi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for openingHour in openingHours %}
+            <tr>
+                <td>{{ openingHour.day }}</td>
+                <td>
+                    {% if openingHour.openTimeAm %}
+                        {{ openingHour.openTimeAm|date('H:i') }}
+                    {% else %}
+                        <strong>Fermé</strong>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if openingHour.closeTimeAm %}
+                        {{ openingHour.closeTimeAm|date('H:i') }}
+                    {% else %}
+                        <strong>Fermé</strong>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if openingHour.openTimePm %}
+                        {{ openingHour.openTimePm|date('H:i') }}
+                    {% else %}
+                        <strong>Fermé</strong>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if openingHour.closeTimePm %}
+                        {{ openingHour.closeTimePm|date('H:i') }}
+                    {% else %}
+                        <strong>Fermé</strong>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Brand;
 use App\Entity\Car;
 use App\Entity\Color;
+use App\Entity\Contact;
 use App\Entity\DinPower;
 use App\Entity\Door;
 use App\Entity\Energy;
@@ -25,19 +26,19 @@ class DashboardEmployeeController extends AbstractDashboardController
     #[Route('/employeeadmin', name: 'employeeadmin')]
     public function index(): Response
     {
-        return $this ->render('admin/employee.html.twig');
+        return $this->render('admin/employee.html.twig');
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
 
 
-        }
+    }
 
-        // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
-        // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
-        //
-        // return $this->render('some/path/my-dashboard.html.twig');
-    
+    // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
+    // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
+    //
+    // return $this->render('some/path/my-dashboard.html.twig');
+
 
     public function configureDashboard(): Dashboard
     {
@@ -57,10 +58,8 @@ class DashboardEmployeeController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Nombre de sièges', 'fas fa-chair', Sit::class);
         yield MenuItem::linkToCrud('Puissance moteur', 'fas fa-horse-head', Power::class);
         yield MenuItem::linkToCrud('Puissance fiscale (DIN)', 'fas fa-money-bill', DinPower::class);
-        yield MenuItem::linkToCrud('Service', 'fas fa-bell-concierge', Service::class);
-        yield MenuItem::linkToCrud('Avis clients', 'fas fa-list', Review::class);
+        yield MenuItem::linkToCrud('Avis clients', 'fas fa-comments', Review::class);
+        yield MenuItem::linkToCrud('Message de contact', 'fas fa-envelope', Contact::class);
         yield MenuItem::linkToUrl('Voir le site', 'fa fa-eye', $this->generateUrl('app_home'));
-    
-    
-}
+    }
 }

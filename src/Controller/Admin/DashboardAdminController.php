@@ -5,10 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\Brand;
 use App\Entity\Car;
 use App\Entity\Color;
+use App\Entity\Contact;
 use App\Entity\DinPower;
 use App\Entity\Door;
 use App\Entity\Energy;
 use App\Entity\Model;
+use App\Entity\OpeningHours;
 use App\Entity\Power;
 use App\Entity\Review;
 use App\Entity\Service;
@@ -63,8 +65,10 @@ class DashboardAdminController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Puissance moteur', 'fas fa-horse-head', Power::class);
         yield MenuItem::linkToCrud('Puissance fiscale (DIN)', 'fas fa-money-bill', DinPower::class);
         yield MenuItem::linkToCrud('Service', 'fas fa-bell-concierge', Service::class);
-        yield MenuItem::linkToCrud('Avis clients', 'fas fa-list', Review::class);
+        yield MenuItem::linkToCrud('Avis clients', 'fas fa-comments', Review::class);
+        yield MenuItem::linkToCrud('Message de contact', 'fas fa-envelope', Contact::class);
         yield MenuItem::linkToCrud('Compte employé', 'fas fa-person', User::class);
+        yield MenuItem::linkToCrud('Horaires', 'fas fa-clock', OpeningHours::class);
         yield MenuItem::linkToUrl('Voir le site', 'fa fa-eye', $this->generateUrl('app_home'));
     }
 }

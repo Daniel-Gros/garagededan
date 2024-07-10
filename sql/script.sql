@@ -4,7 +4,7 @@ CREATE DATABASE IF NOT EXISTS dangarage;
 
 USE dangarage;
 
--- Création de la première table User
+-- Création de la première table: User
 CREATE TABLE IF NOT EXISTS 'user'
 (
     'id' INT PRIMARY KEY AUTO_INCREMENT,

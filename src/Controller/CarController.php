@@ -15,23 +15,25 @@ class CarController extends AbstractController
     #[Route('/showcar', name: 'app_showcar')]
     public function list(Request $request, CarRepository $carRepository): Response
     {
-        $form = $this->createForm(CarFilterType::class);
-        $form->handleRequest($request);
-
-        $criteria = $form->getData();
-        $cars = $carRepository->findByCriteria($criteria);
-
-        if ($request->headers->get('X-Requested-With') === 'XMLHttpRequest') {
-            return $this->json([
+            $form = $this->createForm(CarFilterType::class);
+            $form->handleRequest($request);
+    
+            $criteria = $form->getData() ?? [];
+    
+            $cars = $carRepository->findByCriteria($criteria);
+    
+            if ($request->headers->get('X-Requested-With') === 'XMLHttpRequest') {
+                return $this->json([
+                    'cars' => $cars,
+                ]);
+            }
+    
+            return $this->render('car/index.html.twig', [
+                'form' => $form->createView(),
                 'cars' => $cars,
             ]);
         }
-
-        return $this->render('car/index.html.twig', [
-            'form' => $form->createView(),
-            'cars' => $cars,
-        ]);
-    }
+    
 
     #[Route('/car/{id}', name: 'app_car')]
     public function show($id, CarRepository $carRepository): Response

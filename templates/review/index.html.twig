@@ -1,6 +1,30 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Nos avis{% endblock %}
-
 {% block body %}
+	{% if review is empty %}
+		<p>Aucun avis pour le moment.</p>
+	{% else %}
+		<h1 class="headline-text text-center">Nos avis clients</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        {% for review in review %}
+            <div class="col-12 col-md-8 col-lg-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        {{ review.nickname }}
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p>{{ review.message }}</p>
+                            <footer class="blockquote-footer">
+                                Note: {{ review.score }}/5
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+	{% endif %}
 {% endblock %}

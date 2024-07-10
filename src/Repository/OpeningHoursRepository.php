@@ -20,7 +20,12 @@ class OpeningHoursRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, OpeningHours::class);
     }
-
+    public function findAllOpeningHours()
+    {
+        return $this->createQueryBuilder('opcl')
+            ->getQuery()
+            ->getResult();
+    }
     //    /**
     //     * @return OpeningHours[] Returns an array of OpeningHours objects
     //     */

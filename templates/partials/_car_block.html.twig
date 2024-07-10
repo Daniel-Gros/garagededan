@@ -3,8 +3,9 @@
         <img src="{{vich_uploader_asset(car, 'imageFile')}}" class="card-img-top" alt="image de {{car.brand}} {{car.models}}" style="height: 200px; object-fit: cover;">
         <div class="card-body">
             <h5 class="card-title fw-bold">{{car.brand}} {{car.models}}</h5>
-            <p class="card-text body-text">Prix: {{car.price}} €</p>
             <p class="card-text body-text">Kilométrage: {{car.kilometers}} kms</p>
+            <p class="card-text body-text">Année: {{car.year| date('Y')}}</p>
+            <p class="card-text body-text fw-bold">Prix: {{car.price}} €</p>
             <a href="{{path('app_car', {'id': car.id}) }}" class="button">+ DE DÉTAILS</a>
         </div>
     </div>

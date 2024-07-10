@@ -42,7 +42,6 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/employeeadmin, roles: ROLE_USER }
-
 when@test:
     security:
         password_hashers:

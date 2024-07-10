@@ -20,14 +20,15 @@ class ReviewRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Review::class);
     }
-    public function findRandomReview(): ?Review
+
+    public function findLatestApprovedReviews($limit = 3): array
     {
         return $this->createQueryBuilder('r')
-            ->addSelect('RAND() as HIDDEN rand')
-            ->addOrderBy('rand')
-            ->setMaxResults(2)
+            ->where('r.approved = true')
+            ->orderBy('r.id', 'DESC')
+            ->setMaxResults($limit)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getResult();
     }
     //    /**
     //     * @return Review[] Returns an array of Review objects

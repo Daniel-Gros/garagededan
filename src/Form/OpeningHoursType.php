@@ -15,15 +15,21 @@ class OpeningHoursType extends AbstractType
             ->add('day')
             ->add('open_time_am', null, [
                 'widget' => 'single_text',
+                'required' => true,
             ])
             ->add('close_time_am', null, [
                 'widget' => 'single_text',
+                'required' => true,
             ])
             ->add('open_time_pm', null, [
                 'widget' => 'single_text',
+                'required' => false,
+                'empy_data' => null,
             ])
             ->add('close_time_pm', null, [
                 'widget' => 'single_text',
+                'required' => false,
+                'empty_data' => null,
             ])
         ;
     }

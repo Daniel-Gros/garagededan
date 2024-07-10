@@ -6,14 +6,6 @@ use App\Entity\Car;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<Car>
- *
- * @method Car|null find($id, $lockMode = null, $lockVersion = null)
- * @method Car|null findOneBy(array $criteria, array $orderBy = null)
- * @method Car[]    findAll()
- * @method Car[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
 class CarRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -21,50 +13,49 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
-    public function findByCriteria($criteria)
+    public function findByCriteria(array $criteria): array
     {
-        $qb = $this->createQueryBuilder('c');
+        $queryBuilder = $this->createQueryBuilder('c');
 
-        if (isset($criteria['minKilometers'])) {
-            $qb->andWhere('c.kilometers >= :minKilometers')
+        if (!empty($criteria['minKilometers'])) {
+            $queryBuilder->where('c.kilometers >= :minKilometers')
                 ->setParameter('minKilometers', $criteria['minKilometers']);
         }
-
-        if (isset($criteria['maxKilometers'])) {
-            $qb->andWhere('c.kilometers <= :maxKilometers')
-                ->setParameter('maxKilometers', $criteria['maxKilometers']);
+        foreach ($criteria as $field => $value) {
+            switch ($field) {
+                case 'maxKilometers':
+                    if (!empty($value)) {
+                        $queryBuilder->andWhere('c.kilometers <= :maxKilometers')
+                            ->setParameter('maxKilometers', $value);
+                    }
+                    break;
+                case 'minPrice':
+                    if (!empty($value)) {
+                        $queryBuilder->andWhere('c.price >= :minPrice')
+                            ->setParameter('minPrice', $value);
+                    }
+                    break;
+                case 'maxPrice':
+                    if (!empty($value)) {
+                        $queryBuilder->andWhere('c.price <= :maxPrice')
+                            ->setParameter('maxPrice', $value);
+                    }
+                    break;
+                case 'minYear':
+                    if (!empty($value)) {
+                        $queryBuilder->andWhere('c.year >= :minYear')
+                            ->setParameter('minYear', $value);
+                    }
+                    break;
+                case 'maxYear':
+                    if (!empty($value)) {
+                        $queryBuilder->andWhere('c.year <= :maxYear')
+                            ->setParameter('maxYear', $value);
+                    }
+                    break;
+            }
         }
 
-        if (isset($criteria['minPrice'])) {
-            $qb->andWhere('c.price >= :minPrice')
-                ->setParameter('minPrice', $criteria['minPrice']);
-        }
-
-        if (isset($criteria['maxPrice'])) {
-            $qb->andWhere('c.price <= :maxPrice')
-                ->setParameter('maxPrice', $criteria['maxPrice']);
-        }
-
-        if (isset($criteria['minYear'])) {
-            $qb->andWhere('c.year >= :minYear')
-                ->setParameter('minYear', $criteria['minYear']);
-        }
-
-        if (isset($criteria['maxYear'])) {
-            $qb->andWhere('c.year <= :maxYear')
-                ->setParameter('maxYear', $criteria['maxYear']);
-        }
-
-        return $qb->getQuery()->getResult();
+        return $queryBuilder->getQuery()->getResult();
     }
-
-    //    public function findOneBySomeField($value): ?Car
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
 }

@@ -18,16 +18,16 @@ class OpeningHours
     private ?string $day = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $open_time_am = null;
+    private ?\DateTimeInterface $openTimeAm = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $close_time_am = null;
+    private ?\DateTimeInterface $closeTimeAm = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $open_time_pm = null;
+    private ?\DateTimeInterface $openTimePm = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $close_time_pm = null;
+    private ?\DateTimeInterface $closeTimePm = null;
 
     public function getId(): ?int
     {
@@ -55,48 +55,48 @@ class OpeningHours
 
     public function getOpenTimeAm(): ?\DateTimeInterface
     {
-        return $this->open_time_am;
+        return $this->openTimeAm;
     }
 
-    public function setOpenTimeAm(\DateTimeInterface $open_time_am): static
+    public function setOpenTimeAm(\DateTimeInterface $openTimeAm): static
     {
-        $this->open_time_am = $open_time_am;
+        $this->openTimeAm = $openTimeAm;
 
         return $this;
     }
 
     public function getCloseTimeAm(): ?\DateTimeInterface
     {
-        return $this->close_time_am;
+        return $this->closeTimeAm;
     }
 
-    public function setCloseTimeAm(\DateTimeInterface $close_time_am): static
+    public function setCloseTimeAm(\DateTimeInterface $closeTimeAm): static
     {
-        $this->close_time_am = $close_time_am;
+        $this->closeTimeAm = $closeTimeAm;
 
         return $this;
     }
 
     public function getOpenTimePm(): ?\DateTimeInterface
     {
-        return $this->open_time_pm;
+        return $this->openTimePm;
     }
 
-    public function setOpenTimePm(\DateTimeInterface $open_time_pm): static
+    public function setOpenTimePm(\DateTimeInterface $openTimePm): static
     {
-        $this->open_time_pm = $open_time_pm;
+        $this->openTimePm = $openTimePm;
 
         return $this;
     }
 
     public function getCloseTimePm(): ?\DateTimeInterface
     {
-        return $this->close_time_pm;
+        return $this->closeTimePm;
     }
 
-    public function setCloseTimePm(\DateTimeInterface $close_time_pm): static
+    public function setCloseTimePm(\DateTimeInterface $closeTimePm): static
     {
-        $this->close_time_pm = $close_time_pm;
+        $this->closeTimePm = $closeTimePm;
 
         return $this;
     }

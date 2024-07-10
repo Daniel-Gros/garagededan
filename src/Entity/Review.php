@@ -39,10 +39,13 @@ class Review
     private Collection $users;
 
     #[ORM\Column]
-    private ?bool $approved = null;
+    private ?bool $approved = false;
 
     #[ORM\Column(length: 255)]
     private ?string $nickname = null;
+
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $status = null;
 
     public function __construct()
     {
@@ -125,6 +128,18 @@ class Review
     public function setNickname(string $nickname): static
     {
         $this->nickname = $nickname;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

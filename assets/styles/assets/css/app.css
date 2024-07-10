@@ -51,6 +51,13 @@ html, body {
 .link {
   color: #d94350;
 }
+@media (max-width: 768px) {
+  .link {
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+}
 .link:hover {
   color: #262526;
 }

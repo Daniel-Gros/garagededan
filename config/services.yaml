@@ -6,6 +6,7 @@
 parameters:
     home_car_limit: 3
     home_service_limit: 3
+    review_limit: 3
 
 services:
     # default configuration for services in *this* file
@@ -24,3 +25,5 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    # config/services.yaml
+    

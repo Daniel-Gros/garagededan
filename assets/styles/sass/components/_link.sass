@@ -1,6 +1,8 @@
 @use '../abstracts/_all.sass' as abstracts
 
 .link
+    @include abstracts.responsive-breakpoint(abstracts.$breakpoint-md)
     color: abstracts.$primary
+    
     &:hover
         color: abstracts.$dark

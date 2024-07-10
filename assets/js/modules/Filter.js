@@ -1,50 +1,58 @@
 export class Filter {
-    constructor(formId, carListId) {
-        this.form = document.getElementById(formId);
-        this.carList = document.getElementById(carListId);
-        this.form.addEventListener('submit', this.handleSubmit.bind(this));
-    }
+  constructor(formId, carListId) {
+    this.form = document.getElementById(formId);
+    this.carList = document.getElementById(carListId);
+    this.inputs = this.form.querySelectorAll("input, select");
 
-    handleSubmit(event) {
-        event.preventDefault();
-        const formData = new FormData(this.form);
-        fetch(this.form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            this.renderCars(data.cars);
-        })
-        .catch(error => console.error('Error:', error));
-    }
+    this.form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this.handleInput();
+    });
 
-    renderCars(cars) {
-        this.carList.textContent = '';
-        cars.forEach(car => {
-            const carDiv = document.createElement('div');
-            carDiv.classList.add('car');
+    this.inputs.forEach((input) => {
+      input.addEventListener("change", this.handleInput.bind(this));
+    });
+  }
 
-            const pricePara = document.createElement('p');
-            pricePara.textContent = `Prix: ${car.price} €`;
-            carDiv.appendChild(pricePara);
+  handleInput() {
+    const formData = new FormData(this.form);
+    fetch(this.form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.renderCars(data.cars);
+      })
+      .catch((error) => console.error("Error:", error));
+  }
 
-            const kmPara = document.createElement('p');
-            kmPara.textContent = `Kilomètres: ${car.kilometers}`;
-            carDiv.appendChild(kmPara);
+  renderCars(cars) {
+    this.carList.textContent = "";
+    cars.forEach((car) => {
+      const carDiv = document.createElement("div");
+      carDiv.classList.add("car");
 
-            const yearPara = document.createElement('p');
-            yearPara.textContent = `Année: ${car.year}`;
-            carDiv.appendChild(yearPara);
+      const pricePara = document.createElement("p");
+      pricePara.textContent = `Prix: ${car.price} €`;
+      carDiv.appendChild(pricePara);
 
-            this.carList.appendChild(carDiv);
-        });
-    }
+      const kmPara = document.createElement("p");
+      kmPara.textContent = `Kilomètres: ${car.kilometers} km`;
+      carDiv.appendChild(kmPara);
+
+      const yearPara = document.createElement("p");
+      yearPara.textContent = `Année: ${car.year}`;
+      carDiv.appendChild(yearPara);
+
+      this.carList.appendChild(carDiv);
+    });
+  }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const filter = new Filter('filter-form', 'car-list');
+document.addEventListener("DOMContentLoaded", function () {
+  const filter = new Filter("filter-form", "car-list");
 });
